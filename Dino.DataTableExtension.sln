@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dino.DataTableExtension", "Dino.DataTableExtension\Dino.DataTableExtension.csproj", "{77514E6D-87AD-4324-BE03-45195DE40B83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dino.DataTableExtension.Test", "Dino.DataTableExtension.Test\Dino.DataTableExtension.Test.csproj", "{D2467FDF-157B-487D-806E-9847D911D8EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77514E6D-87AD-4324-BE03-45195DE40B83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77514E6D-87AD-4324-BE03-45195DE40B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77514E6D-87AD-4324-BE03-45195DE40B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77514E6D-87AD-4324-BE03-45195DE40B83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2467FDF-157B-487D-806E-9847D911D8EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2467FDF-157B-487D-806E-9847D911D8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2467FDF-157B-487D-806E-9847D911D8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2467FDF-157B-487D-806E-9847D911D8EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6C03041-74F7-4D39-86AC-9EAE37D8D0F4}
+	EndGlobalSection
+EndGlobal
