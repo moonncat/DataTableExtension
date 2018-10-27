@@ -2,33 +2,46 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Reflection;
 
 namespace Dino.DataTableExtension
 {
     public static class DataTableExtension
     {
+        /// <summary>
+        /// convert datatable into entity
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public static List<T> ToEntity<T>(this DataTable dt) where T : new()
         {
             List<T> entity_list = new List<T>();
             foreach (var row in dt.Select())
             {
-                var entity = new T();
-                foreach (var property in typeof(T).GetProperties())
+                try
                 {
-                    string colName = property.Name;
-                    var attrs = property.GetType().GetCustomAttributes(typeof(AliasAttribute), false);
-                    if (attrs != null && attrs.Length > 0)
+                    var entity = new T();
+                    foreach (var property in typeof(T).GetProperties())
                     {
-                        colName = attrs[0].GetType().GetProperty(nameof(AliasAttribute.ColumnName)).GetValue(attrs[0]) as string;
+                        string colName = property.Name;
+                        var aliasAttr = property.GetCustomAttributes().FirstOrDefault(a => a as AliasAttribute != null);
+                        if (aliasAttr != null)
+                        {
+                            colName = aliasAttr.GetType().GetProperty(nameof(AliasAttribute.ColumnName)).GetValue(aliasAttr) as string;
+                        }
+                        if (dt.Columns.Contains(colName))
+                        {
+                            object val = ValueHandler(property.PropertyType, row[colName]);
+                            property.SetValue(entity, val);
+                        }
                     }
-                    if (dt.Columns.Contains(colName))
-                    {
-                        object val = ValueHandler(property.PropertyType, row[property.Name]);
-                        property.SetValue(entity, val);
-                    }
+                    entity_list.Add(entity);
+                }catch(Exception ex)
+                {
+                    throw new Exception($"{ex.Message}: \r\n{string.Join(",", row.ItemArray)}", ex);
                 }
-                entity_list.Add(entity);
             }
             return entity_list;
         }
@@ -73,6 +86,18 @@ namespace Dino.DataTableExtension
                     throw new NotImplementedException($"{type.FullName} is not supported yet, tell me and it will be supported very soon.");
             }
             return val;
+        }
+        /// <summary>
+        /// convert entity into datatable
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public static DataTable FromEntity<T>(this T entity) where T : new()
+        {
+            DataTable dt = new DataTable();
+
+            return dt;
         }
     }
 }
