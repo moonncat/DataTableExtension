@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>it is very easy component converting DataTable to any Model</Description>
+    <Product>Dino.DataTableExtension</Product>
+    <RepositoryUrl>https://github.com/moonncat/DataTableExtension</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/moonncat/DataTableExtension</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.1.1</FileVersion>
   </PropertyGroup>
 
 </Project>
