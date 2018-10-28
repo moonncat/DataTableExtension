@@ -46,7 +46,16 @@ namespace Dino.DataTableExtension
             }
             return entity_list;
         }
+        public static object ToEntity(this DataTable dt,Type type)
+        {
+            MethodInfo[] methods = typeof(DataTableExtension)
+                .GetMethods(BindingFlags.Public | BindingFlags.Static);
 
+            MethodInfo method = methods
+                .FirstOrDefault(m => m.Name == nameof(DataTableExtension.ToEntity) && m.ContainsGenericParameters == true)
+                .MakeGenericMethod(type);
+            return method.Invoke(null, new[] { dt });
+        }
         /// <summary>
         /// convert entity into datatable
         /// </summary>
