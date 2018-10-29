@@ -38,6 +38,12 @@ namespace Dino.DataTableExtension.Converter
                         else
                             val = System.Convert.ToDecimal(source);
                         break;
+                    case nameof(Single):
+                        if (isDbNull)
+                            val = 0;
+                        else
+                            val = System.Convert.ToSingle(source);
+                        break;
                     case nameof(String):
                         val = source.ToString();
                         break;
@@ -46,6 +52,12 @@ namespace Dino.DataTableExtension.Converter
                             val = DateTime.MinValue;
                         else
                             val = System.Convert.ToDateTime(source);
+                        break;
+                    case nameof(TimeSpan):
+                        if (isDbNull)
+                            val = TimeSpan.MinValue;
+                        else
+                            val = TimeSpan.Parse(source.ToString());
                         break;
                     case nameof(Guid):
                         if (isDbNull)
@@ -57,7 +69,9 @@ namespace Dino.DataTableExtension.Converter
                         val = new NullableValueHandler().Convert(type, source);
                         break;
                     default:
-                        throw new NotImplementedException($"{type.FullName} is not supported yet, tell me and it will be supported very soon.");
+                        System.Diagnostics.Debug.WriteLine($"{type.FullName} is not supported yet, pls kick a issue on https://github.com/moonncat/DataTableExtension.");
+                        val = source;
+                        break;
                 }
             }catch(Exception ex)
             {

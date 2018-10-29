@@ -20,5 +20,9 @@ namespace Dino.DataTableExtension.Test.TestModels
         public Guid? Column_9 { get; set; }
         public double Column_10 { get; set; }
         public double? Column_11 { get; set; }
+        public Single Column_12 { get; set; }
+        public Single? Column_13 { get; set; }
+        public TimeSpan Column_14 { get; set; }
+        public TimeSpan? Column_15 { get; set; }
     }
 }

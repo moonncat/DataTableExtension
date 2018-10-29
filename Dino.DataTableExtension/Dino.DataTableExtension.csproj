@@ -8,9 +8,12 @@
     <PackageProjectUrl>https://github.com/moonncat/DataTableExtension</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>1.0.1</Version>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>1.0.1.1</FileVersion>
+    <Version>1.0.3</Version>
+    <AssemblyVersion>1.0.0.3</AssemblyVersion>
+    <FileVersion>1.0.0.3</FileVersion>
+    <PackageReleaseNotes>Make the converting stronger, add support to more Types</PackageReleaseNotes>
+    <RepositoryType>Git</RepositoryType>
+    <Copyright>Dino</Copyright>
   </PropertyGroup>
 
 </Project>
