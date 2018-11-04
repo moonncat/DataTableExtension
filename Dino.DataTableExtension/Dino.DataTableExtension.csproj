@@ -8,11 +8,10 @@
     <PackageProjectUrl>https://github.com/moonncat/DataTableExtension</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>1.0.4</Version>
-    <AssemblyVersion>1.0.0.4</AssemblyVersion>
-    <FileVersion>1.0.0.4</FileVersion>
-    <PackageReleaseNotes>add GroupBy method, usage:
-dt.GroupBy("ColumnName");</PackageReleaseNotes>
+    <Version>1.0.5</Version>
+    <AssemblyVersion>1.0.0.5</AssemblyVersion>
+    <FileVersion>1.0.0.5</FileVersion>
+    <PackageReleaseNotes>Rich DataTableExtension methods</PackageReleaseNotes>
     <RepositoryType>Git</RepositoryType>
     <Copyright>Dino</Copyright>
   </PropertyGroup>

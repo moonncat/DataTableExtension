@@ -127,5 +127,70 @@ namespace Dino.DataTableExtension.Test
             Assert.True(Convert.ToDouble(result.Rows[0][10]) == 4.02);
             Assert.True(result.Rows[0][11] == DBNull.Value);
         }
+        [Fact]
+        public void DataTableJoinTest()
+        {
+            DataTable dt = new DataTable();
+            foreach (var pi in typeof(EntityModel).GetProperties())
+            {
+                dt.Columns.Add(new DataColumn()
+                {
+                    ColumnName = pi.Name,
+                    DataType = pi.PropertyType.Name.Contains(nameof(Nullable)) ? pi.PropertyType.GetGenericArguments()[0] : pi.PropertyType
+                });
+            }
+            dt.Rows.Add(2, 1, 1.0d, null, "string1", string.Empty, DateTime.Now, null, Guid.NewGuid(), null);
+            dt.Rows.Add(2, null, 2.0d, null, "string2", null, DateTime.Now, null, Guid.NewGuid(), null);
+            dt.Rows.Add(2, null, 2.0d, null, "string2", null, DateTime.Now, null, Guid.NewGuid(), null, 2.01, null);
+            dt.Rows.Add(2, null, 2.0d, null, "string2", null, DateTime.Now, null, Guid.NewGuid(), null, 2.01, null);
+
+            dt.Rows.Add(1, null, 2.0d, null, "string2", null, DateTime.Now, null, Guid.NewGuid(), null, 2.01, null);
+
+            DataTable dtRight = new DataTable();
+            dtRight.Columns.Add(new DataColumn()
+            {
+                ColumnName = "Column_4",
+                DataType = typeof(string)
+            });
+            dtRight.Columns.Add(new DataColumn()
+            {
+                ColumnName = "RightTable_Col_1",
+                DataType = typeof(int)
+            });
+            dtRight.Rows.Add("string1", 123);
+            dtRight.Rows.Add("string2", 456);
+
+
+            var result = dt.Join(dtRight, "Column_4");
+
+            Assert.True(result.Columns.Contains("RightTable_Col_1"));
+            Assert.True(Convert.ToDouble(result.Rows[0]["RightTable_Col_1"]) == 123);
+            Assert.True(Convert.ToDouble(result.Rows[1]["RightTable_Col_1"]) == 456);
+
+        }
+        [Fact]
+        public void DataTableSumTest()
+        {
+            DataTable dt = new DataTable();
+            foreach (var pi in typeof(EntityModel).GetProperties())
+            {
+                dt.Columns.Add(new DataColumn()
+                {
+                    ColumnName = pi.Name,
+                    DataType = pi.PropertyType.Name.Contains(nameof(Nullable)) ? pi.PropertyType.GetGenericArguments()[0] : pi.PropertyType
+                });
+            }
+            dt.Rows.Add(2, 1, 1.0d, null, "string1", string.Empty, DateTime.Now, null, Guid.NewGuid(), null);
+            dt.Rows.Add(2, null, 2.0d, null, "string2", null, DateTime.Now, null, Guid.NewGuid(), null);
+            dt.Rows.Add(2, null, 2.0d, null, "string2", null, DateTime.Now, null, Guid.NewGuid(), null, 2.01, null);
+            dt.Rows.Add(2, null, 2.0d, null, "string2", null, DateTime.Now, null, Guid.NewGuid(), null, 2.01, null);
+
+            dt.Rows.Add(1, null, 2.0d, null, "string2", null, DateTime.Now, null, Guid.NewGuid(), null, 2.01, null);
+            
+            Assert.True(dt.Sum<int>("Column_1") == 1);
+            Assert.True(dt.Sum<decimal>("Column_2") == (decimal)9);
+            Assert.True(dt.Sum<double>("Column_10")- 6.03d<0.001);
+
+        }
     }
 }
