@@ -2,16 +2,17 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
-    <Description>it is very easy component converting DataTable to any Model</Description>
+    <Description>it is very easy a fast, lign weight and stand alone component converting DataTable to any Model, and rich Extension on DataTable</Description>
     <Product>Dino.DataTableExtension</Product>
     <RepositoryUrl>https://github.com/moonncat/DataTableExtension</RepositoryUrl>
     <PackageProjectUrl>https://github.com/moonncat/DataTableExtension</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>1.0.3</Version>
-    <AssemblyVersion>1.0.0.3</AssemblyVersion>
-    <FileVersion>1.0.0.3</FileVersion>
-    <PackageReleaseNotes>Make the converting stronger, add support to more Types</PackageReleaseNotes>
+    <Version>1.0.4</Version>
+    <AssemblyVersion>1.0.0.4</AssemblyVersion>
+    <FileVersion>1.0.0.4</FileVersion>
+    <PackageReleaseNotes>add GroupBy method, usage:
+dt.GroupBy("ColumnName");</PackageReleaseNotes>
     <RepositoryType>Git</RepositoryType>
     <Copyright>Dino</Copyright>
   </PropertyGroup>
