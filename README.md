@@ -28,3 +28,8 @@ DataTable dt=leftTable.Join(rightTable, "colnamnName");
 //Sumary a column values, you can use Sum like below:
 <br/>
 int sum=dt.Sum&lt;int&gt; ("colnamnName");
+
+
+//Exclude some row from a DataTable:
+<br/>
+int dt=sourceTable.Exculde((DataTable)table,"colnamnName");
