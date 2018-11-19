@@ -52,10 +52,10 @@ namespace Dino.DataTableExtension.Test
             var result = dt.GroupBy(nameof(EntityModel.ID));
 
             Assert.True(Convert.ToInt32(result.Rows[1]["ID"]) == 1);
-            Assert.True(result.Rows[1][1] == DBNull.Value);
+            Assert.True(Convert.ToInt32(result.Rows[1][1]) == 9);
             Assert.True(Convert.ToDouble(result.Rows[1][2]) == 2);
 
-            Assert.True(result.Rows.Count == 2);
+            Assert.True(result.Rows.Count == 3);
             Assert.True(Convert.ToInt32(result.Rows[0]["ID"]) == 2);
             Assert.True(result.Rows[0][1] == DBNull.Value);
             Assert.True(Convert.ToDouble(result.Rows[0][2]) == 7);
@@ -88,9 +88,18 @@ namespace Dino.DataTableExtension.Test
         public void DataTableSumTest()
         {
             DataTable dt = TestData.TestDataProvider.Instance.EntityTable;
-            Assert.True(dt.Sum<int>("Column_1") == 1);
-            Assert.True(dt.Sum<decimal>("Column_2") == (decimal)9);
-            Assert.True(dt.Sum<double>("Column_10")- 6.03d<0.001);
+            Assert.True(dt.Sum<int>("Column_1") == 10);
+            Assert.True(dt.Sum<decimal>("Column_2") == (decimal)109);
+            Assert.True(dt.Sum<double>("Column_10")- 106.04d<0.001);
+
+        }
+        [Fact]
+        public void DataTableMaxTest()
+        {
+            DataTable dt = TestData.TestDataProvider.Instance.EntityTable;
+            Assert.True(Convert.ToDouble(dt.Max("ID")["ID"]) == 100);
+
+            Assert.True(Convert.ToDouble(dt.Max("Column_1")["Column_1"]) == 9);
 
         }
     }

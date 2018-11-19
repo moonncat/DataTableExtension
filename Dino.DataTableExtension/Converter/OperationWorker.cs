@@ -41,5 +41,38 @@ namespace Dino.DataTableExtension.Converter
             }
             return item1;
         }
+        public bool LeftLarger(object item1, object item2)
+        {
+            if (item1 == DBNull.Value && item2 != DBNull.Value)
+                return false;
+            if (item1 != DBNull.Value && item2 == DBNull.Value)
+                return true;
+
+            switch (item1.GetType().Name)
+            {
+                case nameof(Int16):
+                    return (Int16)item1 > (Int16)item2;
+                case nameof(Int32):
+                    return (Int32)item1> (Int32)item2;
+                case nameof(Int64):
+                    return (Int64)item1 > (Int64)item2;
+                case nameof(Single):
+                    return (Single)item1 > (Single)item2;
+                case nameof(Double):
+                    return (Double)item1 > (Double)item2;
+                case nameof(Decimal):
+                    return (Decimal)item1 > (Decimal)item2;
+                case nameof(TimeSpan):
+                    return (TimeSpan)item1 > (TimeSpan)item2;
+                case nameof(DateTime):
+                    return (DateTime)item1 > (DateTime)item2;
+                case nameof(Boolean):
+                    return (Boolean)item1 && (Boolean)item2;
+                default:
+                    bool result = false;
+
+                    return result;
+            }
+        }
     }
 }

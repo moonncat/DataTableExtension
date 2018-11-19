@@ -39,7 +39,9 @@ namespace Dino.DataTableExtension.Test.TestData
                 dt.Rows.Add(2, null, 2.0d, null, "string2", null, DateTime.Now, null, Guid.NewGuid(), null, 2.01, null);
                 dt.Rows.Add(2, null, 2.0d, null, "string2", null, DateTime.Now, null, Guid.NewGuid(), null, 2.01, null);
 
-                dt.Rows.Add(1, null, 2.0d, null, "string2", null, DateTime.Now, null, Guid.NewGuid(), null, 2.01, null);
+                dt.Rows.Add(1, 9, 2.0d, null, "string2", null, DateTime.Now, null, Guid.NewGuid(), null, 2.01, null);
+
+                dt.Rows.Add(100, null, 100.0d, null, "string100", null, DateTime.Now, null, Guid.NewGuid(), null, 100.01, null);
 
                 return dt;
             }
